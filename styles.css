@@ -101,7 +101,7 @@ img {
 }
 
 .header-action {
-  min-width: 78px;
+  min-width: 132px;
   padding: 10px 14px;
   border-radius: 6px;
   font-weight: 800;
@@ -231,6 +231,17 @@ p {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.48);
   background: rgba(255, 255, 255, 0.12);
+}
+
+.button.is-disabled {
+  opacity: 0.72;
+  cursor: default;
+}
+
+.button.outline {
+  color: var(--ink);
+  border-color: var(--line);
+  background: var(--surface);
 }
 
 .quick-facts {
@@ -386,6 +397,157 @@ p {
   transform: scale(1.035);
 }
 
+.booking-section {
+  padding-top: 88px;
+}
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.75fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.booking-panel,
+.booking-copy {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 16px 44px rgba(23, 33, 29, 0.1);
+}
+
+.booking-panel {
+  padding: 24px;
+}
+
+.booking-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.booking-panel-head span {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.booking-panel-head strong {
+  color: var(--leaf);
+  font-size: 14px;
+}
+
+.calendar-preview {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(34px, 1fr));
+  gap: 8px;
+}
+
+.calendar-preview span,
+.calendar-preview button {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.calendar-preview span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.calendar-preview button {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: #f3eee4;
+  cursor: default;
+}
+
+.calendar-preview .is-free {
+  border-color: rgba(47, 107, 79, 0.26);
+  background: rgba(47, 107, 79, 0.12);
+}
+
+.calendar-preview .is-busy {
+  color: rgba(23, 33, 29, 0.42);
+  text-decoration: line-through;
+  background: rgba(189, 105, 69, 0.14);
+}
+
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.calendar-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.calendar-legend i {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #f3eee4;
+}
+
+.calendar-legend i.free {
+  border-color: rgba(47, 107, 79, 0.26);
+  background: rgba(47, 107, 79, 0.32);
+}
+
+.calendar-legend i.busy {
+  border-color: rgba(189, 105, 69, 0.16);
+  background: rgba(189, 105, 69, 0.32);
+}
+
+.booking-copy {
+  padding: 26px;
+}
+
+.discount-badge {
+  display: inline-flex;
+  margin-bottom: 22px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  color: #fff;
+  background: var(--clay);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.booking-steps {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding-left: 22px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.booking-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.booking-note {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
 .photo-placeholder {
   display: grid;
   place-items: center;
@@ -485,6 +647,12 @@ details p {
   font-weight: 800;
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -545,7 +713,8 @@ details p {
 
   .about-grid,
   .split,
-  .location-layout {
+  .location-layout,
+  .booking-layout {
     grid-template-columns: 1fr;
   }
 
@@ -573,8 +742,9 @@ details p {
   }
 
   .header-action {
-    min-width: 68px;
+    min-width: 98px;
     padding-inline: 10px;
+    font-size: 13px;
   }
 
   .hero-content {
@@ -626,5 +796,25 @@ details p {
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
+  }
+
+  .booking-panel,
+  .booking-copy {
+    padding: 18px;
+  }
+
+  .booking-panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .calendar-preview {
+    gap: 6px;
+  }
+
+  .calendar-preview span,
+  .calendar-preview button {
+    min-height: 38px;
   }
 }
