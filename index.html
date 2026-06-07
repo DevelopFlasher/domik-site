@@ -164,32 +164,14 @@
         <div class="booking-layout">
           <div class="booking-panel">
             <div class="booking-panel-head">
-              <span>Июнь</span>
-              <strong>Свободные даты уточняются</strong>
+              <span data-calendar-month>Календарь</span>
+              <strong data-calendar-status>Проверяем занятость</strong>
             </div>
-            <div class="calendar-preview" aria-label="Предпросмотр календаря">
-              <span>Пн</span>
-              <span>Вт</span>
-              <span>Ср</span>
-              <span>Чт</span>
-              <span>Пт</span>
-              <span>Сб</span>
-              <span>Вс</span>
-              <button type="button">8</button>
-              <button type="button">9</button>
-              <button type="button">10</button>
-              <button type="button" class="is-free">11</button>
-              <button type="button" class="is-free">12</button>
-              <button type="button" class="is-busy">13</button>
-              <button type="button" class="is-busy">14</button>
-              <button type="button" class="is-free">15</button>
-              <button type="button" class="is-free">16</button>
-              <button type="button" class="is-free">17</button>
-              <button type="button" class="is-free">18</button>
-              <button type="button" class="is-free">19</button>
-              <button type="button">20</button>
-              <button type="button">21</button>
+            <div class="calendar-toolbar" aria-label="Переключение месяца">
+              <button type="button" data-calendar-prev aria-label="Предыдущий месяц">‹</button>
+              <button type="button" data-calendar-next aria-label="Следующий месяц">›</button>
             </div>
+            <div class="calendar-preview" data-calendar aria-label="Календарь занятости"></div>
             <div class="calendar-legend">
               <span><i class="free"></i> свободно</span>
               <span><i class="busy"></i> занято</span>
@@ -210,7 +192,8 @@
               <a class="button outline" href="#booking">Суточно</a>
             </div>
             <p class="booking-note">
-              Телефон, WhatsApp, Telegram и ссылку на Суточно добавим, когда вы пришлете точные контакты.
+              На GitHub Pages календарь работает как витрина. На VPS он будет автоматически читать даты
+              из Авито и Суточно через защищенные настройки сервера.
             </p>
           </div>
         </div>
