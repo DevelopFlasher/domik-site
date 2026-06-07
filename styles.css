@@ -618,6 +618,51 @@ p {
   gap: 12px;
 }
 
+.ads-section {
+  padding-top: 38px;
+}
+
+.ads-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ad-card {
+  min-height: 230px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(215, 230, 239, 0.72), rgba(255, 250, 241, 0.84)),
+    var(--surface);
+}
+
+.ad-label {
+  display: inline-flex;
+  margin-bottom: 20px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  color: #fff;
+  background: var(--leaf);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ad-card h3 {
+  margin-bottom: 12px;
+}
+
+.ad-card p {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.ad-link {
+  color: var(--clay);
+  font-weight: 800;
+}
+
 details {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -802,7 +847,8 @@ details p {
   }
 
   .feature-grid,
-  .gallery {
+  .gallery,
+  .ads-grid {
     grid-template-columns: 1fr;
   }
 
