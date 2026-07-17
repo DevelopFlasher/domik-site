@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Куда съездить рядом с домиком</title>
+    <style>
+      :root {
+        --ink: #1d241f;
+        --muted: #69736c;
+        --paper: #f8f2e8;
+        --card: #fffaf2;
+        --line: rgba(29, 36, 31, 0.14);
+        --leaf: #2f6b4f;
+        --clay: #bc6944;
+        --sky: #d8e9ef;
+        --sun: #f0c15e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        background: #d9d9d9;
+        color: var(--ink);
+        font-family: Arial, "Helvetica Neue", sans-serif;
+      }
+
+      body {
+        padding: 20px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto 20px;
+        padding: 15mm;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 88% 7%, rgba(240, 193, 94, 0.32), transparent 24%),
+          linear-gradient(135deg, #fffaf2, var(--paper));
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.2);
+        page-break-after: always;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 16px;
+        align-items: end;
+        margin-bottom: 16px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid var(--line);
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--clay);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 520px;
+        margin-bottom: 10px;
+        font-size: 34px;
+        line-height: 0.98;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+        font-size: 22px;
+      }
+
+      h3 {
+        margin-bottom: 7px;
+        font-size: 17px;
+      }
+
+      p {
+        margin-bottom: 8px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .intro {
+        max-width: 500px;
+        margin-bottom: 0;
+        font-size: 13px;
+      }
+
+      .info-box {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 250, 242, 0.75);
+      }
+
+      .info-box strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--leaf);
+        font-size: 13px;
+      }
+
+      .places {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .place-card {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 12px;
+        min-height: 170px;
+        padding: 13px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--card);
+      }
+
+      .place-card.wide {
+        grid-column: 1 / -1;
+        grid-template-columns: 58px 1fr;
+        min-height: 150px;
+      }
+
+      .icon {
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        color: #fff;
+        background: var(--leaf);
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      .place-card:nth-child(2n) .icon {
+        background: var(--clay);
+      }
+
+      .place-card:nth-child(3n) .icon {
+        background: #426c87;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 8px 0;
+      }
+
+      .tag {
+        padding: 5px 7px;
+        border-radius: 999px;
+        color: var(--ink);
+        background: rgba(216, 233, 239, 0.82);
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .link {
+        display: inline-block;
+        margin-top: 3px;
+        color: var(--leaf);
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .note {
+        margin-top: 14px;
+        padding: 12px 14px;
+        border-left: 4px solid var(--clay);
+        border-radius: 0 10px 10px 0;
+        background: rgba(255, 250, 242, 0.75);
+      }
+
+      .note p {
+        margin-bottom: 0;
+      }
+
+      .more-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .more-card {
+        min-height: 118px;
+        padding: 13px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--card);
+      }
+
+      .checklist {
+        display: grid;
+        gap: 7px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .checklist li {
+        position: relative;
+        padding-left: 20px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .checklist li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--leaf);
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 16px;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.35;
+      }
+
+      .footer strong {
+        color: var(--ink);
+      }
+
+      .sources {
+        display: grid;
+        gap: 4px;
+        font-size: 10px;
+      }
+
+      @media print {
+        body {
+          padding: 0;
+          background: #fff;
+        }
+
+        .page {
+          width: auto;
+          min-height: 297mm;
+          margin: 0;
+          box-shadow: none;
+        }
+
+        a {
+          color: inherit;
+        }
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Гостевой домик в Ястребках</p>
+          <h1>Куда съездить рядом с домиком</h1>
+          <p class="intro">
+            Небольшая подборка мест для прогулки, активного отдыха и семейных выездов.
+            Перед поездкой лучше проверить расписание, цены и доступность на официальных сайтах.
+          </p>
+        </div>
+        <aside class="info-box">
+          <strong>Быстрый ориентир</strong>
+          <p>
+            До Звенигорода примерно 15 минут на машине. Для точного времени в пути
+            откройте выбранное место в навигаторе.
+          </p>
+        </aside>
+      </header>
+
+      <main class="places">
+        <article class="place-card wide">
+          <div class="icon">⛪</div>
+          <div>
+            <h3>Саввино-Сторожевский монастырь</h3>
+            <p>
+              Историческое место Звенигорода для спокойной прогулки, посещения территории
+              монастыря и красивых видов. Монастырь открыт ежедневно с 6:00 до окончания
+              вечернего богослужения.
+            </p>
+            <div class="tags">
+              <span class="tag">история</span>
+              <span class="tag">прогулка</span>
+              <span class="tag">Звенигород</span>
+            </div>
+            <a class="link" href="https://savvastor.ru/">savvastor.ru</a>
+          </div>
+        </article>
+
+        <article class="place-card">
+          <div class="icon">≈</div>
+          <div>
+            <h3>SUP for FUN Звенигород</h3>
+            <p>
+              SUP-прогулки по Москве-реке. Есть маршруты Каринское — Звенигород
+              и Звенигород — Николина Гора; сбор у стадиона «Спартак» на ул. Ивана Шнырева, 2.
+            </p>
+            <div class="tags">
+              <span class="tag">лето</span>
+              <span class="tag">активно</span>
+              <span class="tag">Москва-река</span>
+            </div>
+            <a class="link" href="https://supforfun.ru/zvenigorod">supforfun.ru/zvenigorod</a>
+          </div>
+        </article>
+
+        <article class="place-card">
+          <div class="icon">❄</div>
+          <div>
+            <h3>Тюбинговая трасса «Солнечная поляна»</h3>
+            <p>
+              Зимнее катание на тюбах рядом с горнолыжным спуском. На сайте указана
+              трасса около 300 м с изгибами и возможность проката инвентаря.
+            </p>
+            <div class="tags">
+              <span class="tag">зима</span>
+              <span class="tag">с детьми</span>
+              <span class="tag">активно</span>
+            </div>
+            <a class="link" href="https://solpolyana-pansionat.ru/uslugi/tyubingovaya-trassa">solpolyana-pansionat.ru</a>
+          </div>
+        </article>
+
+        <article class="place-card">
+          <div class="icon">П</div>
+          <div>
+            <h3>Парк Захарово</h3>
+            <p>
+              Семейный парк в деревне Захарово: прогулки, афиша мероприятий и культурные
+              события. Подходит как легкая дневная поездка без сложного маршрута.
+            </p>
+            <div class="tags">
+              <span class="tag">семья</span>
+              <span class="tag">афиша</span>
+              <span class="tag">прогулка</span>
+            </div>
+            <a class="link" href="https://zakharovopark.ru/">zakharovopark.ru</a>
+          </div>
+        </article>
+
+        <article class="place-card">
+          <div class="icon">★</div>
+          <div>
+            <h3>Парк-отель «Бридж Кантри»</h3>
+            <p>
+              Парк-отель в деревне Ястребки с инфраструктурой для отдыха: бассейн,
+              бильярд, спортзал, футбольное поле, SPA и ресторанные зоны.
+            </p>
+            <div class="tags">
+              <span class="tag">рядом</span>
+              <span class="tag">бассейн</span>
+              <span class="tag">спорт</span>
+            </div>
+            <a class="link" href="https://gorizont-park-hotel.ru/">gorizont-park-hotel.ru</a>
+          </div>
+        </article>
+      </main>
+
+      <div class="note">
+        <p>
+          Совет гостям: для SUP, тюбинга, бассейна и SPA лучше заранее проверить режим работы,
+          сезонность и свободные места. Для монастыря уместна спокойная одежда.
+        </p>
+      </div>
+
+      <footer class="footer">
+        <div>
+          <strong>Домик в Ястребках</strong><br />
+          Подборка для гостей. Обновлено: июль 2026.
+        </div>
+        <div class="sources">
+          <span>Источники: официальные сайты объектов.</span>
+          <span>Цены и расписание могут меняться.</span>
+        </div>
+      </footer>
+    </section>
+
+    <section class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Идеи для расширения</p>
+          <h1>Что еще можно добавить в папку гостя</h1>
+          <p class="intro">
+            Эти пункты стоит дополнить после проверки ссылок, контактов и актуальных условий.
+            Получится полноценный локальный путеводитель на 2-3 страницы.
+          </p>
+        </div>
+        <aside class="info-box">
+          <strong>Как пользоваться</strong>
+          <p>
+            Можно распечатать только первую страницу как быстрый гид, а вторую оставить
+            для будущего расширения и заметок хозяев.
+          </p>
+        </aside>
+      </header>
+
+      <main class="more-grid">
+        <article class="more-card">
+          <h3>Платная рыбалка рядом</h3>
+          <p>
+            В объявлении упоминается рыбалка примерно в 5 минутах. Нужны название,
+            адрес, телефон, правила вылова и актуальные цены.
+          </p>
+        </article>
+
+        <article class="more-card">
+          <h3>Музей-усадьба Захарово и Большие Вяземы</h3>
+          <p>
+            Хорошая культурная связка для гостей, которым интересны Пушкинские места
+            и прогулка по усадебным территориям.
+          </p>
+        </article>
+
+        <article class="more-card">
+          <h3>Кафе и рестораны Звенигорода</h3>
+          <p>
+            Полезно сделать отдельную подборку: завтрак, семейный обед, кофе,
+            доставка или еда навынос.
+          </p>
+        </article>
+
+        <article class="more-card">
+          <h3>Магазины и аптеки</h3>
+          <p>
+            Добавить ближайшие точки в радиусе 3 км: адреса, время работы,
+            что удобно купить по дороге.
+          </p>
+        </article>
+
+        <article class="more-card">
+          <h3>Прогулочные маршруты</h3>
+          <p>
+            Можно составить короткие маршруты: «на 30 минут», «на час»,
+            «красивый вид для фото», «куда сходить с детьми».
+          </p>
+        </article>
+
+        <article class="more-card">
+          <h3>Баня, массаж и локальные услуги</h3>
+          <p>
+            Если услуги доступны по договоренности, удобно вынести их отдельным
+            блоком: контакты, формат, время записи, стоимость.
+          </p>
+        </article>
+      </main>
+
+      <div class="note">
+        <p>
+          Что собрать для следующей версии: реальные расстояния от домика, телефоны,
+          ссылки на карты, 1-2 фото каждого места и отметку «лучше бронировать заранее».
+        </p>
+      </div>
+
+      <footer class="footer">
+        <div>
+          <strong>Черновик для хозяев</strong><br />
+          Перед печатью проверьте актуальность расписаний и телефонов.
+        </div>
+        <ul class="checklist">
+          <li>Добавить QR-коды на карты и сайты.</li>
+          <li>Уточнить ближайшие кафе, магазины, аптеки.</li>
+          <li>Проверить сезонность SUP и тюбинга.</li>
+        </ul>
+      </footer>
+    </section>
+  </body>
+</html>
